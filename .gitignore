@@ -399,3 +399,4 @@ FodyWeavers.xsd
 .vs/
 BooksApp/bin/
 BooksAPI/bin/
+.vs/BooksManager/
