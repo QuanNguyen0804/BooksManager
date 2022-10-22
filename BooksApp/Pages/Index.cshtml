@@ -1,0 +1,224 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Books</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Category</th>
+                <th scope="col">Author</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="body-table">
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>mdo</td>
+                <td>mdo</td>
+                <td>
+                    <button class="small">Edit</button>
+                    <button class="small">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick=(resetModal())>Add a Book</button>
+    <button type="button" id="btn-modal-edit" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Book</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="text" class="form-control" name="name" id="book-id" hidden>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label float-start">Name</label>
+                            <input type="text" class="form-control" name="name" id="book-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label float-start">Publishers</label>
+                            <input class="form-control" name="publishers" id="book-publisher"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label float-start">Category</label>
+                            <input class="form-control" name="category" id="book-category"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label float-start">Author</label>
+                            <input class="form-control" name="author" id="book-author"></input>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btn-add" class="btn btn-primary" onclick="handleAddUpdateBook(true)">Add</button>
+                    <button type="button" id="btn-update" class="btn btn-primary d-none" onclick="handleAddUpdateBook(false)">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<script type="text/javascript">
+    function handleAddUpdateBook(add) {
+        var id = $("#book-id").val();
+        var name = $("#book-name").val();
+        var publisher = $("#book-publisher").val();
+        var category = $("#book-category").val();
+        var author = $("#book-author").val();
+
+        if (name == "") {
+            return alert("Name is required")
+        }
+
+        var data = {
+            name,
+            publisher,
+            category,
+            author,
+        }
+
+        var apiUrl = 'https://localhost:44344/api/Books/';
+
+        if (add == false) {
+            apiUrl += id;
+        }
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                "Access-Control-Allow-Methods": "*",
+            },
+            body: JSON.stringify(data),
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here
+            console.log(data);
+            location.reload();
+        }).catch(err => {
+            // Do something for an error here
+            alert(err);
+        });
+    }
+
+    function getBooks() {
+        var apiUrl = 'https://localhost:44344/api/Books';
+
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here
+            console.log(data);
+            genTable(data)
+        }).catch(err => {
+            // Do something for an error here
+            alert(err);
+        });
+    }
+
+    function deleteBook(id) {
+        var apiUrl = 'https://localhost:44344/api/Books/' + id;
+
+        fetch(apiUrl, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Methods": "*",
+            },}).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here
+            location.reload();
+            console.log(data);
+        }).catch(err => {
+            // Do something for an error here
+            alert(err);
+        });
+    }
+
+    function handleEditBook(id) {
+        var apiUrl = 'https://localhost:44344/api/Books/' + id;
+
+        fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Methods": "*",
+            },
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            // Work with JSON data here
+            handleSetFormEdit(data[0]);
+            
+        }).catch(err => {
+            // Do something for an error here
+            alert(err);
+        });
+    }
+
+    function resetModal() {
+        $("#book-id").val("");
+        $("#book-name").val("");
+        $("#book-publishers").val("");
+        $("#book-category").val("");
+        $("#book-author").val("");
+
+        $("#btn-add").removeClass('d-none');
+        $("#btn-update").addClass('d-none');
+    }
+
+    function handleSetFormEdit(data) {
+        $("#book-id").val(data.id);
+        $("#book-name").val(data.name);
+        $("#book-publishers").val(data.publisher);
+        $("#book-category").val(data.category);
+        $("#book-author").val(data.author);
+
+        $("#btn-add").addClass('d-none');
+        $("#btn-update").removeClass('d-none');
+
+        var btn = $("#btn-modal-edit");
+        btn.click();
+    }
+
+    function genTable(data) {
+        var body = '';
+        var eBody = document.querySelector('.body-table');
+
+        for (var i = 0; i < data.length; i++) {
+            body += `<tr>
+                <th scope="row">` + data[i].id + `</th>
+                <td>` + data[i].name + `</td>
+                <td>` + data[i].publisher + `</td>
+                <td>` + data[i].category + `</td>
+                <td>` + data[i].author + `</td>
+                <td>
+                    <button class="small" onclick=(handleEditBook(` + data[i].id + `))>Edit</button>
+                    <button class="small" onclick=(deleteBook(` + data[i].id + `))>Delete</button>
+                </td>
+            </tr>`
+        }
+        eBody.innerHTML = body;
+    }
+
+    getBooks();
+</script>
