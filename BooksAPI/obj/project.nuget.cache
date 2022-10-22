@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "blgl9PAT5zspMuGT9Xi/Y+96lrbqi5oncajSYJ0AX+XGPBzFsW99cAXNNnr58aN/bHz0Q787Uc4ZojnGBgFyCg==",
+  "dgSpecHash": "XlUSI6TZOmlegGApJaDFlx+pyrQWaAceUL4KYaySWpPBakXLoBgdi0bSDoiKMV5tQVBGWr0bYTAixTHGFJGcJA==",
   "success": true,
-  "projectFilePath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\BooksAPI.csproj",
+  "projectFilePath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\BooksAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quan\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Quan\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksAPI", "WebApplication1\BooksAPI.csproj", "{A7A1EB73-5F8D-4592-A10C-28B7F18CC0EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksAPI", "BooksAPI\BooksAPI.csproj", "{A7A1EB73-5F8D-4592-A10C-28B7F18CC0EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksApp", "BooksApp\BooksApp.csproj", "{20AC6269-736E-44E0-AFB6-0D5624C0B8DB}"
 EndProject

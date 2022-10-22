@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\BooksAPI.csproj": {}
+    "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\BooksAPI.csproj": {}
   },
   "projects": {
-    "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\BooksAPI.csproj": {
+    "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\BooksAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\BooksAPI.csproj",
+        "projectUniqueName": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\BooksAPI.csproj",
         "projectName": "BooksAPI",
-        "projectPath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\BooksAPI.csproj",
+        "projectPath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\BooksAPI.csproj",
         "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\WebApplication1\\obj\\",
+        "outputPath": "F:\\N4_2022-2023\\PTUD HTTTHD\\TH\\BooksManager\\BooksAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config",
